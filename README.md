@@ -1,4 +1,9 @@
-## Hi there 👋
+## Hi, I’m Anusha 👋  
+
+Python developer with a background in Physics, building logic-driven, real-world tools.  
+Currently developing an adaptive exam study planner that creates personalized timetables using priorities, constraints, and preferences.  
+Interested in automation, planning systems, and problem-solving.
+
 
 <!--
 **anushasharmas/anushasharmas** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
