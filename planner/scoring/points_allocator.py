@@ -65,7 +65,7 @@ PERFORMANCE_MAP = {
     "okay":1,
     "well":0.8
 }
-def GET_COVERAGE_MODIFIER(coverage_level: str) -> float:
+def get_coverage_modifier(coverage_level: str) -> float:
     """
     Converts coverage level into a priority modifier.
     Lower coverage -> higher modifier.
@@ -80,7 +80,7 @@ if __name__ == "__main__":
         difficulty=DIFFICULTY_MAP["hard"],
         credits=CREDITS_MAP["high"],
         performance_risk=PERFORMANCE_MAP["poor"],
-        coverage_modifier=GET_COVERAGE_MODIFIER("just_started")
+        coverage_modifier=get_coverage_modifier("just_started")
     )
 
     english_score = compute_subject_score(
@@ -89,7 +89,7 @@ if __name__ == "__main__":
         difficulty=DIFFICULTY_MAP["easy"],
         credits=CREDITS_MAP["normal"],
         performance_risk=PERFORMANCE_MAP["okay"],
-        coverage_modifier=GET_COVERAGE_MODIFIER("mostly")
+        coverage_modifier=get_coverage_modifier("mostly")
     )
 
     print("Maths score:", maths_score)
