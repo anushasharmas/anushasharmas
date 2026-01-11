@@ -53,12 +53,24 @@ COVERAGE_MAP = {
     "high": 0.6
 }
 
+CREDITS_MAP = {
+    "high":1.2,
+    "normal":1,
+    "low":0.8
+}
+
+PERFORMANCE_MAP = {
+    "poor": 1.2,
+    "okay":1,
+    "well":0.8
+}
 if __name__ == "__main__":
     maths_score = compute_subject_score(
         exam_urgency=URGENCY_MAP["close"],
         relative_time_needed=TIME_MAP["most"],
         difficulty=DIFFICULTY_MAP["hard"],
-        credits=1.2,
+        credits=CREDITS_MAP["high"],
+        performance_risk=PERFORMANCE_MAP["poor"],
         coverage_modifier=COVERAGE_MAP["medium"]
     )
 
@@ -66,7 +78,8 @@ if __name__ == "__main__":
         exam_urgency=URGENCY_MAP["close"],
         relative_time_needed=TIME_MAP["least"],
         difficulty=DIFFICULTY_MAP["easy"],
-        credits=1.0,
+        credits=CREDITS_MAP["normal"],
+        performance_risk=PERFORMANCE_MAP["okay"],
         coverage_modifier=COVERAGE_MAP["low"]
     )
 
