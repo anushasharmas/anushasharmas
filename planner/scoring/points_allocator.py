@@ -48,9 +48,10 @@ DIFFICULTY_MAP = {
 }
 
 COVERAGE_MAP = {
-    "low": 1.0,
-    "medium": 0.8,
-    "high": 0.6
+    "just_started": 0.1,
+    "partial": 0.4,
+    "mostly": 0.7,
+    "almost_done": 0.9,
 }
 
 CREDITS_MAP = {
@@ -71,7 +72,7 @@ if __name__ == "__main__":
         difficulty=DIFFICULTY_MAP["hard"],
         credits=CREDITS_MAP["high"],
         performance_risk=PERFORMANCE_MAP["poor"],
-        coverage_modifier=COVERAGE_MAP["medium"]
+        coverage_modifier=COVERAGE_MAP["just_started"]
     )
 
     english_score = compute_subject_score(
@@ -80,7 +81,7 @@ if __name__ == "__main__":
         difficulty=DIFFICULTY_MAP["easy"],
         credits=CREDITS_MAP["normal"],
         performance_risk=PERFORMANCE_MAP["okay"],
-        coverage_modifier=COVERAGE_MAP["low"]
+        coverage_modifier=COVERAGE_MAP["mostly"]
     )
 
     print("Maths score:", maths_score)
