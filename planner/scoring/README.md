@@ -35,3 +35,9 @@ priority through an inverse coverage modifier function.
 This separation keeps data representation and decision logic clean
 and extensible.
 
+points_allocator.py
+├── URGENCY_MAP, TIME_MAP, DIFFICULTY_MAP, etc.    (static maps)
+├── get_coverage_modifier()                        (domain logic)
+├── compute_subject_score()                        (core scoring)
+├── compute_score_from_inputs(user_inputs)         (this kwargs orchestration)
+└── if __name__ == "__main__":                     (example/test run)
