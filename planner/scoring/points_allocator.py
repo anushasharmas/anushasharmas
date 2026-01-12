@@ -1,4 +1,5 @@
 # planner/scoring/points_allocator.py
+# Scoring v1 – stable baseline
 
 def compute_subject_score(
     exam_urgency: float,
