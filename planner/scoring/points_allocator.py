@@ -73,6 +73,49 @@ def get_coverage_modifier(coverage_level: str) -> float:
     coverage_value = COVERAGE_MAP.get(coverage_level, 0.4)
     return 1 - coverage_value
 
+def compute_score_from_inputs(user_inputs: dict) -> float:
+    """
+    Converts user-friendly inputs into numeric values and computes
+    the final subject score using default-safe kwargs orchestration.
+
+    user_inputs example:
+    {
+        "exam_urgency": "close",
+        "relative_time_needed": "most",
+        "difficulty": "hard",
+        "credits": "high",
+        "performance_risk": "poor",
+        "coverage_modifier": "just_started",
+        
+    }
+    """
+
+    # exam_urgency is mandatory
+    if "exam_urgency" not in user_inputs:
+        raise ValueError("exam_urgency is required to compute score")
+
+    kwargs = {
+        "exam_urgency": URGENCY_MAP[user_inputs["exam_urgency"]]
+    }
+
+    # Optional parameters (only added if user provides input)
+    if user_inputs.get("relative_time_needed"):
+        kwargs["relative_time_needed"] = TIME_MAP[user_inputs["relative_time_needed"]]
+
+    if user_inputs.get("difficulty"):
+        kwargs["difficulty"] = DIFFICULTY_MAP[user_inputs["difficulty"]]
+
+    if user_inputs.get("credits"):
+        kwargs["credits"] = CREDITS_MAP[user_inputs["credits"]]
+
+    if user_inputs.get("performance_risk"):
+        kwargs["performance_risk"] = PERFORMANCE_MAP[user_inputs["performance_risk"]]
+
+    if user_inputs.get("coverage_modifier"):
+        kwargs["coverage_modifier"] = get_coverage_modifier(user_inputs["coverage_modifier"])
+
+    return compute_subject_score(**kwargs)
+
 if __name__ == "__main__":
     maths_score = compute_subject_score(
         exam_urgency=URGENCY_MAP["close"],
@@ -94,6 +137,40 @@ if __name__ == "__main__":
 
     print("Maths score:", maths_score)
     print("English score:", english_score)
+
+if __name__ == "__main__":
+    # Case 1: Only exam urgency provided
+    user_inputs = {
+        "exam_urgency": "close"
+    }
+
+    score = compute_score_from_inputs(user_inputs)
+    print("Score with only exam_urgency:", score)
+
+if __name__ == "__main__":
+    # Case 2: exam urgency + difficulty
+    user_inputs = {
+        "exam_urgency": "close",
+        "difficulty": "hard"
+    }
+
+    score = compute_score_from_inputs(user_inputs)
+    print("Score with urgency + difficulty:", score)
+
+if __name__ == "__main__":
+    # Case 3a: No coverage input
+    score_no_coverage = compute_score_from_inputs({
+        "exam_urgency": "close"
+    })
+
+    # Case 3b: Coverage provided
+    score_with_coverage = compute_score_from_inputs({
+        "exam_urgency": "close",
+        "coverage_modifier": "just_started"
+    })
+
+    print("Score without coverage:", score_no_coverage)
+    print("Score with coverage:", score_with_coverage)
 
 if __name__ == "__main__":
     main()
