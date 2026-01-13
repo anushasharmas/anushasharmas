@@ -1,5 +1,16 @@
 # planner/scoring/points_allocator.py
-# Scoring v1 – stable baseline
+
+"""
+Scoring v1 – Stable baseline
+
+This module computes subject priority scores for an adaptive study planner.
+It supports incomplete user input by applying neutral defaults (1.0) and
+only amplifies priority when explicit signals are provided.
+
+Design principle:
+- Missing input = no bias
+- User input = intentional influence
+"""
 
 def compute_subject_score(
     exam_urgency: float,
