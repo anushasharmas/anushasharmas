@@ -88,7 +88,7 @@ def get_coverage_modifier(coverage_level: str) -> float:
 def compute_score_from_inputs(user_inputs: dict) -> float:
     """
     Converts user-friendly inputs into numeric values and computes
-    the final subject score using default-safe kwargs orchestration.
+    the final subject score using default-safe score_params orchestration.
 
     user_inputs example:
     {
@@ -106,28 +106,28 @@ def compute_score_from_inputs(user_inputs: dict) -> float:
     if "exam_urgency" not in user_inputs:
         raise ValueError("exam_urgency is required to compute score")
 
-    kwargs = {
+    score_params = {
         "exam_urgency": URGENCY_MAP[user_inputs["exam_urgency"]]
     }
 
     # Optional parameters (only added if user provides input)
     if user_inputs.get("relative_time_needed"):
-        kwargs["relative_time_needed"] = TIME_MAP[user_inputs["relative_time_needed"]]
+        score_params["relative_time_needed"] = TIME_MAP[user_inputs["relative_time_needed"]]
 
     if user_inputs.get("difficulty"):
-        kwargs["difficulty"] = DIFFICULTY_MAP[user_inputs["difficulty"]]
+        score_params["difficulty"] = DIFFICULTY_MAP[user_inputs["difficulty"]]
 
     if user_inputs.get("credits"):
-        kwargs["credits"] = CREDITS_MAP[user_inputs["credits"]]
+        score_params["credits"] = CREDITS_MAP[user_inputs["credits"]]
 
     if user_inputs.get("performance_risk"):
-        kwargs["performance_risk"] = PERFORMANCE_MAP[user_inputs["performance_risk"]]
+        score_params["performance_risk"] = PERFORMANCE_MAP[user_inputs["performance_risk"]]
 
     if user_inputs.get("coverage_modifier"):
-        kwargs["coverage_modifier"] = get_coverage_modifier(user_inputs["coverage_modifier"])
+        score_params["coverage_modifier"] = get_coverage_modifier(user_inputs["coverage_modifier"])
 
-    return compute_subject_score(**kwargs)
-
+    return compute_subject_score(**score_params)
+   
 if __name__ == "__main__":
     maths_score = compute_subject_score(
         exam_urgency=URGENCY_MAP["close"],
