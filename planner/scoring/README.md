@@ -35,6 +35,12 @@ priority through an inverse coverage modifier function.
 This separation keeps data representation and decision logic clean
 and extensible.
 
+### Design Philosophy
+Scoring is intentionally conservative. When user input is missing,
+the system applies neutral defaults instead of guessing, ensuring
+fair and predictable prioritization.
+
+
 points_allocator.py
 ├── URGENCY_MAP, TIME_MAP, DIFFICULTY_MAP, etc.    (static maps)
 ├── get_coverage_modifier()                        (domain logic)
