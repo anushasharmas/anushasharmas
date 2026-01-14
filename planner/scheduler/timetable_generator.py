@@ -1,3 +1,33 @@
+from datetime import date
+
+def compute_total_study_units(
+    exam_date: date,
+    today: date,
+    study_days_per_week: int,
+    hours_per_day: int
+) -> int:
+    """
+    Returns total available study units (1 unit = 1 hour)
+    """
+
+    days_left = (exam_date - today).days
+    if days_left <= 0:
+        return 0
+
+    # Average study days available
+    effective_study_days = (days_left / 7) * study_days_per_week
+
+    total_units = int(effective_study_days * hours_per_day)
+
+    return max(total_units, 0)
+
+total_units = compute_total_study_units(
+    exam_date=exam_date,
+    today=date.today(),
+    study_days_per_week=5,
+    hours_per_day=4
+)
+
 def allocate_study_units(subject_scores: dict, total_units: int) -> dict:
     """
     Allocate study units proportionally based on subject scores.
@@ -69,5 +99,14 @@ if __name__ == "__main__":
         "Physics": 6.1
     }
 
-    units = allocate_study_units(scores, total_units=12)
+    units = allocate_study_units(scores, total_units=total_units)
     print(units)
+    
+subject_units = allocate_study_units(
+    subject_scores,
+    total_units
+)
+print(subject_units)
+print("\nAllocated study units:")
+    for subject, units in allocation.items():
+        print(f"{subject}: {units}")
