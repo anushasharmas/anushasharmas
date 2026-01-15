@@ -1,32 +1,32 @@
 from datetime import date
 
-def compute_total_study_units(
+def calculate_days_left(exam_date: date) -> int:
+    today = date.today()
+    return max((exam_date - today).days, 0)
+
+def calculate_total_study_units(
     exam_date: date,
-    today: date,
-    study_days_per_week: int,
+    study_days: int,
     hours_per_day: int
 ) -> int:
-    """
-    Returns total available study units (1 unit = 1 hour)
-    """
+    days_left = calculate_days_left(exam_date)
+    effective_days = min(study_days, days_left)
+    return effective_days * hours_per_day
 
-    days_left = (exam_date - today).days
-    if days_left <= 0:
-        return 0
+if __name__ == "__main__":
+    exam_date = date(2026, 2, 20)
 
-    # Average study days available
-    effective_study_days = (days_left / 7) * study_days_per_week
+    study_days = 10
+    hours_per_day = 4
 
-    total_units = int(effective_study_days * hours_per_day)
+    total_units = calculate_total_study_units(
+        exam_date,
+        study_days,
+        hours_per_day
+    )
 
-    return max(total_units, 0)
+    print(f"Total study units: {total_units}")
 
-total_units = compute_total_study_units(
-    exam_date=exam_date,
-    today=date.today(),
-    study_days_per_week=5,
-    hours_per_day=4
-)
 
 def allocate_study_units(subject_scores: dict, total_units: int) -> dict:
     """
@@ -94,9 +94,9 @@ def allocate_study_units(subject_scores: dict, total_units: int) -> dict:
 
 if __name__ == "__main__":
     scores = {
-        "Maths": 7.5,
-        "English": 4.2,
-        "Physics": 6.1
+        "Maths": 13.3,
+        "English": 6.5,
+        "Physics": 10.2
     }
 
     units = allocate_study_units(scores, total_units=total_units)
