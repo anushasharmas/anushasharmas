@@ -99,14 +99,10 @@ if __name__ == "__main__":
         "Physics": 10.2
     }
 
-    units = allocate_study_units(scores, total_units=total_units)
-    print(units)
+    subject_units = allocate_study_units(scores, total_units=total_units)
+    print(subject_units)
     
-subject_units = allocate_study_units(
-    subject_scores,
-    total_units
-)
-print(subject_units)
 print("\nAllocated study units:")
-    for subject, units in allocation.items():
+    for subject, units in subject_units.items():
         print(f"{subject}: {units}")
+print(sum(subject_units.values()))
