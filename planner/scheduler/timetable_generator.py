@@ -26,8 +26,10 @@ if __name__ == "__main__":
     )
 
     print(f"Total study units: {total_units}")
-
-
+# Allocates total study units across subjects based on their relative scores.
+# Higher score → more units.
+# Uses proportional allocation + fair rounding.
+# Example: If Maths has highest score, it gets the most units.
 def allocate_study_units(subject_scores: dict, total_units: int) -> dict:
     """
     Allocate study units proportionally based on subject scores.
