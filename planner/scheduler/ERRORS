@@ -1,0 +1,21 @@
+# Error Handling & Failure Modes
+
+This document describes known error cases and how the scheduler should respond.
+
+## Configuration Errors
+- Missing subject difficulty tags
+- Invalid or negative time allocations
+- Total required units exceeding available days
+
+## Runtime Errors
+- Invariant violations after schedule generation
+- Conflicting user constraints that cannot be satisfied
+
+## Handling Strategy
+- Prefer explicit exceptions over silent correction
+- Provide actionable error messages to the user
+- Fail fast when core constraints are violated
+
+## Future Improvements
+- Structured error types
+- User-facing explanations for conflicts
