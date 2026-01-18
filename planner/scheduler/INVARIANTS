@@ -1,0 +1,13 @@
+# Scheduling Invariants
+
+These invariants must always hold true regardless of scheduling mode or user preference.
+
+## Invariants
+1. No subject with difficulty level "hard" may be scheduled consecutively.
+2. Total allocated study time must not exceed the user-defined daily limit.
+3. A subject cannot appear more times than its required unit count.
+4. Rest or buffer time must exist between long sessions.
+
+## Enforcement
+- Invariants should be checked after schedule generation.
+- Violations must raise explicit errors or warnings.
