@@ -12,7 +12,28 @@ def calculate_total_study_units(
     days_left = calculate_days_left(exam_date)
     effective_days = min(study_days, days_left)
     return effective_days * hours_per_day
+"""
+    Calculates the total available study units before the exam.
 
+    The function determines how many days are effectively available
+    for studying by comparing the planned study days with the number
+    of days left until the exam, and then multiplies it by the number
+    of study hours per day.
+
+    Parameters:
+    exam_date (date):
+        The date of the exam.
+
+    study_days (int):
+        The maximum number of days the user plans to study.
+
+    hours_per_day (int):
+        Number of study hours planned per day.
+
+    Returns:
+    int:
+        Total study units available (effective study days × hours per day).
+    """
 if __name__ == "__main__":
     exam_date = date(2026, 2, 20)
 
@@ -108,3 +129,4 @@ print("\nAllocated study units:")
     for subject, units in subject_units.items():
         print(f"{subject}: {units}")
 print(sum(subject_units.values()))
+
