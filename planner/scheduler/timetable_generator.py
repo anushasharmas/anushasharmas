@@ -51,7 +51,7 @@ if __name__ == "__main__":
 # Higher score → more units.
 # Uses proportional allocation + fair rounding.
 # Example: If Maths has highest score, it gets the most units.
-def allocate_study_units(subject_scores: dict, total_units: int) -> dict:
+def allocate_study_units(subject_scores: dict, all_units: int) -> dict:
     """
     Allocate study units proportionally based on subject scores.
 
@@ -64,7 +64,7 @@ def allocate_study_units(subject_scores: dict, total_units: int) -> dict:
             "Physics": 6.1
         }
 
-    total_units : int
+    All_units : int
         Total available study units (e.g., 12 units over 3 days)
 
     Returns
@@ -90,7 +90,7 @@ def allocate_study_units(subject_scores: dict, total_units: int) -> dict:
 
     # Initial proportional allocation
     raw_allocation = {
-        subject: (score / total_score) * total_units
+        subject: (score / total_score) * all_units
         for subject, score in subject_scores.items()
     }
 
@@ -98,7 +98,7 @@ def allocate_study_units(subject_scores: dict, total_units: int) -> dict:
     allocation = {subject: int(units) for subject, units in raw_allocation.items()}
 
     # Distribute remaining units (due to rounding)
-    remaining_units = total_units - sum(allocation.values())
+    remaining_units = all_units - sum(allocation.values())
 
     # Sort subjects by largest fractional remainder
     remainders = sorted(
@@ -121,13 +121,15 @@ if __name__ == "__main__":
         "English": 6.5,
         "Physics": 10.2
     }
+    reserved_units = len(scores)  # 1 unit per subject
+    unreserved_units = total_units - reserved_units
+    subject_units = allocate_study_units(scores, all_units=unreserved_units)
+    final_units = {subject: round(units + 1) for subject, units in subject_units.items()}
 
-    subject_units = allocate_study_units(scores, total_units=total_units)
-    print(subject_units)
     
 print("\nAllocated study units:")
-    for subject, units in subject_units.items():
+    for subject, units in final_units.items():
         print(f"{subject}: {units}")
-print(sum(subject_units.values()))
+print(sum(final_units.values()))
 
 distribute_units_across_days(subject_units, exam_dates, total_days)
