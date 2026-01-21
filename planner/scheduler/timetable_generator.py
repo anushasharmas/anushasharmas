@@ -130,3 +130,4 @@ print("\nAllocated study units:")
         print(f"{subject}: {units}")
 print(sum(subject_units.values()))
 
+distribute_units_across_days(subject_units, exam_dates, total_days)
