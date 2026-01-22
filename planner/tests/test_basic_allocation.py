@@ -250,3 +250,4 @@ print("\nAllocated study units:")
 for subject, units in final_units.items():
         print(f"{subject}: {units}")
 print(sum(final_units.values()))
+
