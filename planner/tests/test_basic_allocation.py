@@ -251,3 +251,28 @@ for subject, units in final_units.items():
         print(f"{subject}: {units}")
 print(sum(final_units.values()))
 
+def distribute_units_across_days(
+    subject_units: dict,
+    total_days: int,
+    hours_per_day: int,
+    diversity: float
+) -> dict:
+    """
+    Distributes subject study units across days.
+
+    Parameters:
+    - subject_units: dict[str, int]
+        Final units per subject (sum = total_units)
+    - total_days: int
+        Number of days available
+    - hours_per_day: int
+        Max study units per day
+    - diversity: float (0–1)
+        Controls how many subjects appear per day
+
+    Returns:
+    - timetable: dict[int, dict[str, int]]
+        Day-wise subject-unit allocation
+    """
+    pass
+
