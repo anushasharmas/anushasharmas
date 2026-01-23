@@ -276,3 +276,39 @@ def distribute_units_across_days(
     """
     pass
 
+def distribute_units_across_days(subject_units, total_days, hours_per_day, diversity):
+    # Decide max subjects per day
+    if diversity <= 0.3:
+        max_subjects = 1
+    elif diversity <= 0.7:
+        max_subjects = 2
+    else:
+        max_subjects = len(subject_units)
+
+    remaining = subject_units.copy()
+    timetable = {}
+
+    for day in range(1, total_days + 1):
+        timetable[day] = {}
+        capacity = hours_per_day
+
+        # Pick subjects with most remaining units
+        available_subjects = sorted(
+            [s for s in remaining if remaining[s] > 0],
+            key=lambda s: remaining[s],
+            reverse=True
+        )
+
+        subjects_today = available_subjects[:max_subjects]
+
+        for subject in subjects_today:
+            if capacity == 0:
+                break
+            if remaining[subject] == 0:
+                continue
+
+            timetable[day][subject] = 1
+            remaining[subject] -= 1
+            capacity -= 1
+
+    return timetable
