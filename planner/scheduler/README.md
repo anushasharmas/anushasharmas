@@ -16,7 +16,6 @@ study time in an efficient and balanced manner.
   - Total allocated units exactly match available units
   - Fair distribution when rounding is required
 
----
 ## How the Scheduler Works
 
 1. The user provides subjects along with relative parameters such as:
