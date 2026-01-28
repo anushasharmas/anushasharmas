@@ -1,24 +1,32 @@
 # Data
 
-Sample input data and test scenarios for evaluating the planner logic.
+This folder contains sample input data and datasets used to evaluate
+and validate the planner logic.
 
-# Data Directory
+The data here supports development, testing, and experimentation,
+and is intentionally kept separate from core logic.
 
-This folder contains all datasets used in the project.
-
-## Structure
+## Directory Structure
 
 - `raw/`  
-  Original, unmodified data sources.
+  Original, unmodified data sources.  
+  These files should be treated as read-only.
 
 - `processed/`  
-  Cleaned and transformed datasets used for modeling/analysis.
+  Cleaned, transformed, or derived datasets used by the system
+  during modeling, analysis, or mock runs.
 
 - `external/`  
-  Third-party or externally sourced data.
+  Third-party or externally sourced data files.
+
+## Guidelines
+
+- Do not modify files inside `raw/`
+- All data processing or transformation logic lives in `/scripts`
+- Large or sensitive datasets are excluded from version control
+- Data files should remain static and free of executable code
 
 ## Notes
 
-- Do not edit files in `raw/`
-- All processing scripts are located in `/scripts`
-- Data is excluded from version control if large/sensitive
+- This folder should not contain business logic or experiments
+- Executable sanity checks or mock runs b
