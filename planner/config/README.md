@@ -1,7 +1,6 @@
 # Config
 
 This folder contains **configuration and tunable parameters** used across the project.
-
 Configurations define *what can be adjusted* without changing core logic. No decision-making or computation should live here.
 
 ---
