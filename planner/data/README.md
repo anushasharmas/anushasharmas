@@ -2,7 +2,6 @@
 
 This folder contains sample input data and datasets used to evaluate
 and validate the planner logic.
-
 The data here supports development, testing, and experimentation,
 and is intentionally kept separate from core logic.
 
