@@ -11,7 +11,6 @@ The goal of this module is to ensure that generated timetables remain
 realistic, flexible, and cognitively sustainable.
 
 ---
-
 ## Scope of Constraints
 
 ### Cognitive Constraints
