@@ -35,7 +35,6 @@ config/
 ```
 
 ---
-
 ## What Does NOT Belong Here
 
 ❌ Any logic or conditionals
