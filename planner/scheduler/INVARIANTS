@@ -1,13 +1,40 @@
 # Scheduling Invariants
 
-These invariants must always hold true regardless of scheduling mode or user preference.
+These invariants must always hold true regardless of scheduling mode,
+difficulty strategy, or user preference.
+
+They define hard correctness constraints, not optimization goals.
 
 ## Invariants
-1. No subject with difficulty level "hard" may be scheduled consecutively.
-2. Total allocated study time must not exceed the user-defined daily limit.
-3. A subject cannot appear more times than its required unit count.
-4. Rest or buffer time must exist between long sessions.
+
+1. **Unit Conservation**
+   - A subject must not be scheduled for more units than its required unit count.
+   - Total scheduled units across all days must equal the sum of required units.
+
+2. **Daily Capacity Limit**
+   - Total study units scheduled in a single day must not exceed the
+     user-defined daily limit.
+
+3. **Subject Eligibility**
+   - Only subjects with remaining units may be scheduled.
+   - A subject with zero remaining units must never appear in the schedule.
+
+4. **Order Preservation (Mode-Dependent)**
+   - When a scheduling mode specifies an explicit subject order
+     (e.g., sequential mode), that order must not be violated.
+
+5. **Consecutive Allocation Bounds (Mode-Dependent)**
+   - When a scheduling mode defines a maximum consecutive allocation
+     for a subject, that limit must be enforced.
+   - If no such limit is defined, consecutive allocation is unrestricted.
+
+6. **Rest / Buffer Compliance**
+   - If a scheduling mode introduces rest or buffer requirements,
+     those requirements must be satisfied.
+   - If rest rules are not enabled, this invariant is non-applicable.
 
 ## Enforcement
-- Invariants should be checked after schedule generation.
-- Violations must raise explicit errors or warnings.
+
+- Invariants must be validated **after schedule generation**.
+- Violations must raise explicit errors or structured warnings.
+- Invariant checks must not mutate the generated schedule.
