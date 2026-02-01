@@ -16,7 +16,6 @@ def generate_sequential_schedule(
     Returns:
         Dictionary mapping day number -> list of subjects studied that day
     """
-
     # Copy to avoid mutating input
     remaining_units = subject_units.copy()
 
