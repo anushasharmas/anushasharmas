@@ -1,5 +1,6 @@
 from typing import Dict, List
 from collections import defaultdict
+hours_per_day=8 #Its already defined in the timetable_generator.py function.
 
 DIFFICULTY_MAP = {
     "hard": 1.3,
@@ -74,8 +75,12 @@ def generate_light_mixed_schedule(
         day += 1
 
     return schedule
+final_units ={"English":2,
+              "Maths":65,
+              "Physics":13
+             }
 schedule = generate_light_mixed_schedule(
-    final_units=final_units,
+    subject_units=final_units,
     subject_difficulty={
         "Maths": "hard",
         "Physics": "hard",
