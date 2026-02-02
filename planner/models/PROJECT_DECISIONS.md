@@ -3,7 +3,6 @@
 This folder contains the core decision-making logic that transforms inputs (exam metadata, mock scores, constraints) into scheduling and allocation outcomes.
 
 ---
-
 ## Project Decisions & Rationale
 
 ### Scheduling Strategy
