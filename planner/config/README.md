@@ -13,7 +13,6 @@ Configurations define *what can be adjusted* without changing core logic. No dec
 * Enable future user-level customization
 
 ---
-
 ## What Belongs Here
 
 Examples of valid config items:
