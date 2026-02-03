@@ -11,3 +11,5 @@ def resolve_max_consecutive_units(
 ) -> int:
     percent = MIXING_PRESETS[mixing_level]
     return max(1, int(percent * units_per_day))
+if subject == last_subject and consecutive_count[subject] >= max_consecutive:
+    continue
