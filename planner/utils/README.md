@@ -13,7 +13,6 @@ The purpose of the `utils` module is to:
 - Provide stable, low-level building blocks
 
 ---
-
 ## What Belongs Here
 
 Utility functions should be generic and reusable across the project.
