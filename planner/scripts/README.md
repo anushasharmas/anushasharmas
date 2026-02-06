@@ -10,7 +10,6 @@ Scripts help validate system behavior during development
 before logic is formalized into automated tests.
 
 ## What Belongs Here
-
 - Mock runs combining multiple modules
 - Exploratory executions to inspect outputs
 - Temporary experiments with example values
@@ -22,7 +21,6 @@ Examples:
 - Debugging interactions between modules
 
 ## What Does NOT Belong Here
-
 - Core business logic
 - Reusable library code
 - Automated unit tests
