@@ -1,4 +1,4 @@
-## Hi, I’m Anusha 👋  
+## Hi, I’m Anusha 
 
 Python developer with a background in Physics, building logic-driven, real-world tools.  
 Currently developing an adaptive exam study planner that creates personalized timetables using priorities, constraints, and preferences.  
